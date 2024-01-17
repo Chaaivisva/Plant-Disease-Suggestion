@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+
+<div class="flex flex-col md:flex-row pb-20 mt-10">
+  <div class="w-full md:w-1/2 p-4 md:p-8 bg-white mt-20 md:mt-0 md:ml-10">
+      <h1 class="text-4xl font-bold mb-4">Plant Disease Suggestion</h1>
+      <p class="text-gray-600">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum ullam hic quis totam pariatur enim, voluptate ipsa earum iste minus, nihil amet perferendis temporibus veniam, eligendi praesentium harum. Tempora, fuga.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore laboriosam recusandae quasi, temporibus cupiditate voluptatem accusamus ducimus harum ipsa nulla eum impedit possimus, at id culpa iste sequi nobis neque.
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas voluptatem quisquam porro doloremque tenetur quis et adipisci tempore, eligendi impedit veniam voluptatum odit corrupti incidunt reprehenderit atque at ad numquam?
+      </p>
+      <button class="mt-8 bg-[#90EE91] p-2 rounded shadow text-lg font-semibold"><a href="{% url 'user_problem' %}">Get Started</a></button>
+  </div>
+  <div class="w-full md:w-1/2 flex justify-center items-center mt-20">
+      <img src="{% static 'images/bg.jpeg' %}" alt="Background Image" class="w-full md:w-96 object-cover">
+  </div>
+</div>
+
+<div class="mt-10 mx-4 md:mx-10 py-10 px-4 md:px-8">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="mb-4 md:mb-0">
+        <div class="px-4 py-5 bg-[#90EE91] rounded-lg shadow-lg">
+          <div class="font-bold text-xl">Community support</div>
+          <div class="mt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut porro consequuntur inventore expedita doloremque</div>
+        </div>
+    </div>
+
+    <div class="mb-4 md:mb-0">
+      <div class="px-4 py-5 bg-[#90EE91] rounded-lg shadow-lg">
+        <div class="font-bold text-xl">Build Your Profile</div>
+        <div class=" mt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut porro consequuntur inventore expedita doloremque</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="px-4 py-5 bg-[#90EE91] rounded-lg shadow-lg">
+        <div class="font-bold text-xl">Share Your Experience</div>
+        <div class=" mt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut porro consequuntur inventore expedita doloremque</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="px-4 md:px-8 py-5 mt-8 md:mx-14 bg-base-100 rounded-xl shadow-lg mb-5">
+  <div class="font-bold text-2xl">About Us</div>
+  <div class="mt-4">
+    <div class="mt-4">
+      <div class="font-bold text-lg">Welcome to Our Community Support Hub!</div>
+
+      <div class="mt-2">At Love Plants, we are dedicated to fostering a thriving community that shares a passion for plants and a commitment to support one another in our journey towards cultivating a green and healthy environment. Our community is not just a platform; it's a place where plant enthusiasts, gardeners, and nature lovers come together to exchange knowledge, experiences, and, most importantly, support. Whether you're a seasoned horticulturist or a beginner nurturing your first seedling, our community is here to inspire, educate, and connect you with like-minded individuals who share your love for all things green.</div>
+
+      <div class="font-bold text-lg mt-2">Building Your Own Green Profile:</div>
+
+      <div class="mt-2">One of the unique features of our community is the ability to build your own green profile. Share your plant collection, showcase your gardening achievements, and connect with other members who appreciate your expertise. The personalized dashboard allows you to track the growth of your plants, set milestones, and receive accolades from the community. You can create a digital garden that reflects your unique journey, and in doing so, inspire others to embark on their own botanical adventures.</div>
+
+      <div class="font-bold text-lg mt-2">Supporting Diseased Plants:</div>
+
+      <div class="mt-2">Our community takes pride in addressing the concerns of our members, especially when it comes to plant health. If you encounter diseased or distressed plants, our platform provides a dedicated section for seeking advice and assistance. Our knowledgeable members, including experienced botanists and passionate gardeners, are readily available to offer guidance. Post photos, describe symptoms, and let the community diagnose the issue. Together, we can formulate effective solutions, share remedies, and support each other in nursing our beloved plants back to health. At Love plants, no plant is left behind, and every leaf matters.</div>
+
+      <div class="mt-4 text-green-900 font-semibold text-md">
+     Join us today and become a part of a vibrant community that celebrates the beauty of nature, the joy of gardening, and the collective spirit of supporting one another. Together, let's create a green haven where friendships blossom, knowledge grows, and plants thrive. 
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="mt-10 mx-4 md:mx-10 py-10 px-4 md:px-8">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="mb-4 md:mb-0">
+        <div class="px-4 py-5 bg-[#90EE91] rounded-lg shadow-lg">
+          <div class="font-bold text-xl">E-Mail</div>
+      <div class="mt-2">Loveplants@gmail.com</div>
+        </div>
+    </div>
+
+    <div class="mb-4 md:mb-0">
+      <div class="px-4 py-5 bg-[#90EE91] rounded-lg shadow-lg">
+        <div class="font-bold text-xl">Website Creator</div>
+          <div class=" mt-2">Chaai visva</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="px-4 py-5 bg-[#90EE91] rounded-lg shadow-lg">
+        <div class="font-bold text-xl">Creator contact</div>
+          <div class=" mt-2">9363663474</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+
+
+
+

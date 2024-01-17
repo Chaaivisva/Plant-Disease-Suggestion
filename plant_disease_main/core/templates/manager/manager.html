@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+  <!-- Main content -->
+    <div class="grid grid-cols-5">
+      <div class="col-span-1">
+        <div class="bg-base-100 py-8 px-6">
+
+          <div class="p-6 rounded-xl bg-[#90EE91] shadow-md">
+            <div class="text-gray-500 font-semibold text-2xl">Menu</div>
+            <div class="text-gray-600 font-semibold text-lg mt-2 underline underline-offset-4"><a href="{% url 'manager' %}">Add Plant library</a></div> 
+            <div class="text-gray-600 font-semibold text-lg mt-2"><a href="{% url 'updates' %}">Add Daily Updates</a></div> 
+            <div class="text-gray-600 font-semibold text-lg mt-2"><a href="{% url 'index' %}">Home</a></div>
+          </div>
+
+
+          <div class="p-6 rounded-xl mt-5 bg-[#90EE91] shadow-md">
+              <div class="text-gray-500 font-semibold text-xl">Your Profile</div>
+              <div class="mt-2">
+                <p class="text-gray-600 font-semibold">Name :</p> {{ user.username }}
+              </div>
+              <div class="mt-2 ">
+                <p class="text-gray-600 font-semibold">E-mail :</p> {{ user.email }}
+              </div>
+          </div>
+
+          
+
+          <div class="p-6 rounded-xl mt-5 shadow-md">
+            <div>
+              <form>
+                <label for="date">Current Date:</label>
+                <input type="text" id="date" name="date" >
+                </form>
+            </div>
+          </div>
+
+          
+        </div>
+      </div>
+
+      <div class="col-span-4 py-8 px-6 ">
+        <div class="bg-gray-200 rounded-t-xl">
+          <div class="p-6 flex jusity-evenly gap-10">
+            <div class="text-2xl font-semibold text-gray-600">Add Plants Here.....</div>
+          </div>
+        </div>
+
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="grid grid-cols-2 bg-gray-100 rounded-b-lg">
+              <div class="py-4 px-6">
+                <div class="mt-4">
+                  <label for="name" class="block text-gray-700 font-semibold">Plant Name :</label>
+                  <input type="text" name="name" class="w-full border rounded-md py-2 px-3 text-gray-700 mt-1">
+                </div>
+                
+                <div class="mt-4">
+                  <label for="scientific_name" class="block text-gray-700 font-semibold">scientific_name : </label>
+                  <input type="text" name="scientific_name" class="w-full border rounded-md py-2 px-3 text-gray-700 mt-1">
+                </div>
+
+                <div class="mt-4">
+                  <label for="description" class="block text-gray-700 font-semibold">Description : </label>
+                  <input type="text" name="description" class="w-full border rounded-md py-2 px-3 text-gray-700 mt-1">
+                </div>
+
+                <div class="mt-4">
+                    <label for="image" class="block text-gray-700 font-semibold">Plant Image : </label>
+                    <input type="file" name="image" class="w-full border rounded-md py-2 px-3 text-gray-700 mt-1">
+                </div>
+              </div>
+
+              <div class="py-4 px-6">
+                <div class="mt-4">
+                    <label for="Mostly_caused_disease_name" class="block text-gray-700 font-semibold">Common Disease Name : </label>
+                    <input type="text" name="Mostly_caused_disease_name" class="w-full border rounded-md py-2 px-3 text-gray-700 mt-1">
+                </div>
+
+                <div class="mt-4">
+                    <label for="solution" class="block text-gray-700 font-semibold">Solution : </label>
+                    <input type="text" name="solution" class="w-full border rounded-md py-2 px-3 text-gray-700 mt-1">
+                </div>
+
+                <div class="mt-4">
+                    <label for="disease_image" class="block text-gray-700 font-semibold">Plant Disease Image : </label>
+                    <input type="file" name="disease_image" class="w-full border rounded-md py-2 px-3 text-gray-700 mt-1">
+                </div>
+
+                <div class="mt-6">
+                  <button type="submit" class="bg-[#90EE91] hover:bg-[#90EE91]  font-bold py-2 px-4 rounded">Submit</button>
+                </div>
+              </div>
+          </div>
+        </form>
+
+         
+        </div>
+    
+    </div>
+
+{% endblock %}
+
+
+<!-- footer -->
+<div class="footer flex justify-center bg-[#90EE91] p-2 rounded-b-lg">
+  <div class="text-gray-600 font-semibold">@Copyright.2024 Kumaraguru College of Technology.</div>
+</div>
+<!-- End of footer -->
+<script>  
+  var today = new Date();
+  var yyyy = today.getFullYear();
+  var mm = today.getMonth() + 1;
+  var dd = today.getDate();
+  if (mm < 10) {
+  mm = '0' + mm;
+  }
+  if (dd < 10) {
+  dd = '0' + dd;
+  }
+  var formattedDate = yyyy + '-' + mm + '-' + dd; 
+  document.getElementById('date').value = formattedDate;
+  
+  </script>
+</body>
+</html>

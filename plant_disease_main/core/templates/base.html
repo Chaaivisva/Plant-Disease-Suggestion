@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} | Love Plants</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">  
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="container max-h-screen bg-[#90EE91] bg-center px-5 md:px-28 py-5 dark:bg-slate-900 dark:text-white dark:bg-[#90EE91]">
+        <nav class="flex flex-col md:flex-row items-center">
+            <a href="#" class="font-bold text-lg mb-4 md:mb-0 md:mr-auto">LOVE PLANTS</a>
+            <ul class="flex-1 md:flex md:justify-center md:space-x-5">
+                <li class="list-none inline-block px-3 md:px-5"><a href="/" class="no-underline">Home</a></li>
+                <li class="list-none inline-block px-3 md:px-5"><a href="#" class="no-underline">About</a></li>
+                <li class="list-none inline-block px-3 md:px-5"><a href="#" class="no-underline">Features</a></li>
+                <li class="list-none inline-block px-3 md:px-5"><a href="#" class="no-underline">Contact</a></li>
+            </ul>
+            
+            {% if user.is_authenticated %} 
+                {% for group in request.user.groups.all %}
+                    {% if group.name == 'manager' %}
+                        <p><a class="nav-link active font-semibold" href="{% url 'manager' %}">Manager</a></p> 
+                    {% endif %}
+                {% endfor %}
+                <a href="{% url 'logout' %}" class="pl-3 md:pl-5 font-semibold no-underline">Logout</a>
+                <a href="{% url 'user_problem' %}" class="font-semibold no-underline px-2 md:px-3">Get In!</a>  
+            {% else %}
+                <a href="{% url 'login' %}" class="px-4 md:px-10 no-underline">Login</a>
+                <a href="{% url 'register' %}" class="pl-4 no-underline">Signup</a>
+            {% endif %}
+        </nav>
+
+    </div>
+    <!-- End of the navbar  -->
+    {% block content %}
+
+    {% endblock %}
+    <!-- Footer -->
+    <footer class="bg-[#90EE91] text-center py-4 text-gray-600">
+      <p>&copy; 2024 Love Plants. All rights reserved.</p>
+    </footer>
+    <!-- End of Footer -->
+</body>
+</html>

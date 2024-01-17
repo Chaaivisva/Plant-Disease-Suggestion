@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}Plant Description{% endblock %}
+{% block content %}
+<div class="mt-8 mb-5">
+  <div class="grid grid-cols-3 gap-2">
+    <div class="flex justify-center items-center">
+      <p class="underline text-black text-xl underline-offset-4 font-semibold bg-green-300 p-2 rounded-lg shadow-lg"><a href="{% url 'user_page1' %}">Plant Library</a></p>
+    </div>
+
+    <div class="flex justify-center items-center">
+      <p class="text-green-700 text-xl font-semibold"><a href="{% url 'user_problem' %}">Problem</a></p>
+    </div>
+
+    <div class="flex justify-center items-center">
+      <p class="text-green-700 text-xl font-semibold"><a href="{% url 'daily_updates' %}">Daily Updates</a></p>
+    </div>
+    
+  </div>
+</div>
+
+<body class="bg-gray-100">
+
+  <div class="container mx-auto p-4 flex flex-col lg:flex-row">
+      <!-- Left side - Plant Information -->
+      <div class="lg:w-1/2">
+          <img src="{{plant.image.url}}" alt="Plant Image" class="w-full h-auto mb-4">
+          <h2 class="text-2xl font-bold mb-2">Plant Name : {{plant.name}}</h2>
+          <p class="text-gray-600 mb-2">Plant Scientific Name : {{plant.scientific_name}}</p>
+          <p class="mb-4">Plant Description : {{plant.description}}</p>
+      </div>
+
+      <!-- Right side - Disease Information -->
+      <div class="lg:w-1/2 lg:ml-4">
+          <div class="lg:flex lg:flex-col lg:justify-between">
+              <!-- Top - Disease Image and Name -->
+              <div class="mb-4">
+                  <img src="{{plant.disease_image.url}}" alt="Disease Image" class="w-full h-auto mb-2 lg:mb-0 lg:w-auto lg:h-40">
+                  <h2 class="text-2xl font-bold">Disease Name : {{plant.Mostly_caused_disease_name}}</h2>
+              </div>
+              
+              <!-- Bottom - Disease Solution -->
+              <div>
+                  <p>Solution for the Disease : {{plant.solution}}</p>
+              </div>
+          </div>
+      </div>
+  </div>
+
+</body>
+{% endblock %}

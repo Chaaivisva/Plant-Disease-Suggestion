@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Comment{% endblock %}
+
+{% block content %}
+<div class="mt-8 mb-5">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+    <div class="flex justify-center items-center">
+      <p class="text-green-700 text-xl font-semibold"><a href="{% url 'user_page1' %}">Plant Library</a></p>
+    </div>
+
+    <div class="flex justify-center items-center">
+      <p class="underline text-black text-xl underline-offset-4 font-semibold p-2 bg-green-300 rounded-lg shadow-lg"><a href="{% url 'user_problem' %}">Problem</a></p>
+    </div>
+
+    <div class="flex justify-center items-center">
+      <p class="text-green-700 text-xl font-semibold"><a href="{% url 'daily_updates' %}">Daily Updates</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="bg-white p-6 shadow-md flex flex-col md:flex-row mx-4 md:mx-14">
+  <!-- User's Uploaded Image -->
+  <div class="mr-4">
+      <img src="{{userplant.image.url}}" alt="User Uploaded Image" class="rounded-xl shadow" height="150" width="300">
+  </div>
+
+  <!-- User Information and Description -->
+  <div class="flex-1">
+      <!-- User Information -->
+      <div class="flex items-center space-x-4 mb-4">
+          <!-- User Image -->
+          <img src="https://placekitten.com/50/50" alt="User Avatar" class="w-12 h-12 rounded-full">
+
+          <!-- User Information -->
+          <div>
+              <p class="font-semibold text-gray-800">{{userplant.created_by}}</p>
+              <p class="text-gray-600">{{userplant.created_at}}</p>
+          </div>
+      </div>
+
+      <!-- Problem Description -->
+      <div>
+          <p class="text-gray-800">{{userplant.description}}</p>
+      </div>
+  </div>
+</div>
+
+{% for suggestions in usersuggestion %}
+  {% if userplant.id == suggestions.plant.id %}
+    <div class="mx-4 md:mx-14 mt-5 p-4 rounded-xl shadow-lg">
+      <div class="flex items-center space-x-4 mb-4">
+        <!-- User Image -->
+        <img src="https://placekitten.com/50/50" alt="User Avatar" class="w-12 h-12 rounded-full">
+
+        <!-- User Information -->
+        <div>
+            <p class="font-semibold text-gray-800">{{suggestions.given_by}}</p>
+            <p class="text-gray-600">{{suggestions.created_at}}</p>
+        </div>
+      </div>
+      <div class="mt-2">
+        <p><strong>Comment : </strong>{{suggestions.suggestion}}</p>
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
+<div class="mt-4 mb-4">
+  .
+</div>
+
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Problem{% endblock %}
+
+{% block content %}
+<div class="mt-8 mb-5">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+    <div class="flex justify-center items-center">
+      <p class="text-green-700 text-xl font-semibold"><a href="{% url 'user_page1' %}">Plant Library</a></p>
+    </div>
+
+    <div class="flex justify-center items-center">
+      <p class="underline text-black text-xl underline-offset-4 font-semibold  bg-green-300 p-2 rounded-lg shadow-lg">Problem</p>
+    </div>
+
+    <div class="flex justify-center items-center">
+      <p class="text-green-700 text-xl font-semibold"><a href="{% url 'daily_updates' %}">Daily Updates</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="mx-4 md:mx-14 shadow-lg rounded-xl">
+  <div>
+   <a href="{% url 'add_problem' %}">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-16 h-16 rounded-full bg-gray-200 ml-5 mt-2 mb-2">
+        <path fill-rule="evenodd" d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd" />
+      </svg>
+    </a>
+    <p class="ml-5 mt-2 mb-2">Click and Upload Your Problem here...</p>
+  </div>
+  <hr>
+<div class="rounded-xl shadow-lg ">
+  {% for plant in userplants %}
+   {% if plant.created_by == body %}
+        <a href="{% url 'add_comment' plant.id %}">
+          <div class="bg-gray-200 p-6 shadow-md flex flex-col md:flex-row ">
+            <div class="mr-4">
+                <img src="{{plant.image.url}}" alt="User Uploaded Image" class="rounded-xl shadow" height="150" width="300">
+            </div>
+            <div class="flex-1">
+                <div class="flex items-center space-x-4 mb-4">
+                    <img src="https://placekitten.com/50/50" alt="User Avatar" class="w-12 h-12 rounded-full">
+                    <div>
+                        <p class="font-semibold text-gray-800">{{plant.created_by}}</p>
+                        <p class="text-gray-600">{{plant.created_at}}</p>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-gray-800">{{plant.description}}</p>
+                </div>
+                
+                <div class="mt-4 md:flex">
+                  <button class="bg-[#90EE91] p-2 rounded-lg shadow-md mb-2 md:mb-0"><a href="{% url 'read_comment' plant.id %}">View Comment</a></button>
+                  <button class="bg-blue-300 p-2 rounded-lg shadow-md md:ml-2"><a href="{% url 'add_comment' plant.id %}">Add Comment</a></button>
+                  <button class="bg-red-500 p-2 rounded-lg shadow-md md:ml-2"><a href="{% url 'delete_comment' plant.id %}">Delete</a></button>
+                </div>
+            </div>
+          </div>
+        </a>
+  {% endif %}
+  {% endfor %}
+</div>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+  {% for plant in userplants reversed %}
+    <a href="{% url 'add_comment' plant.id %}">
+      <div class="bg-white p-6 shadow-md flex flex-col md:flex-row">
+        <div class="mr-4">
+            <img src="{{plant.image.url}}" alt="User Uploaded Image" class="rounded-xl shadow" height="150" width="300">
+        </div>
+        <div class="flex-1">
+                <div class="flex items-center space-x-4 mb-4">
+                <img src="https://placekitten.com/50/50" alt="User Avatar" class="w-12 h-12 rounded-full">
+                <div>
+                    <p class="font-semibold text-gray-800">{{plant.created_by}}</p>
+                    <p class="text-gray-600">{{plant.created_at}}</p>
+                </div>
+            </div>
+            <div>
+                <p class="text-gray-800">{{plant.description}}</p>
+            </div>
+            
+            <div class="mt-4 md:flex">
+              <button class="bg-[#90EE91] p-2 rounded-lg shadow-md mb-2 md:mb-0"><a href="{% url 'read_comment' plant.id %}">View Comment</a></button>
+              <button class="bg-blue-300 p-2 rounded-lg shadow-md md:ml-2"><a href="{% url 'add_comment' plant.id %}">Add Comment</a></button>
+            </div>
+        </div>
+      </div>
+    </a>
+  {% endfor %}
+</div>
+
+<div class="mt-5 mb-5 text-white">
+  .
+</div>
+{% endblock %}
